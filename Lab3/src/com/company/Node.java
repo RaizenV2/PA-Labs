@@ -1,21 +1,39 @@
 package com.company;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Node implements Comparable {
     private String name;
     private Map<Node,Integer> cost ;
+    private List<Node> shortestPath;
+    private Integer distance = Integer.MAX_VALUE;
 
     public Node(String name){
         this.name = name;
         this.cost = new HashMap<Node,Integer>();
+        this.shortestPath = new LinkedList<>();
     }
 
+    public Integer getDistance() {
+        return distance;
+    }
 
     public String getName() {
         return name;
+    }
+
+    public List<Node> getShortestPath() {
+        List <Node> retList = new LinkedList<>();
+        for(int i = 0 ;i <shortestPath.size();i++)
+        {
+            Node aux = shortestPath.get(i);
+            retList.add(aux);
+        }
+        return retList;
+    }
+
+    public void setShortestPath(List<Node> shortestPath) {
+        this.shortestPath = shortestPath;
     }
 
     public Map<Node, Integer> getCost() {
@@ -28,6 +46,17 @@ public abstract class Node implements Comparable {
         }
         return retCost;
     }
+    public   void showShortestPath()
+    {
+        System.out.println(shortestPath.size());
+        for(int i =0 ; i <shortestPath.size();i++)
+        {
+            Node aux = shortestPath.get(i);
+            System.out.println(i);
+            System.out.print(aux.getName() +"-->");
+        }
+
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -35,6 +64,10 @@ public abstract class Node implements Comparable {
 
     public void setCost(Node n, Integer i ) {
         this.cost.put(n,i);
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
     }
 
     @Override
