@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Street implements Comparable {
     private String name;
     private Integer weights;
@@ -26,12 +28,22 @@ public class Street implements Comparable {
 
     @Override
     public String toString() {
-        return "Street{" +
-                "name='" + name + '\'' +
-                ", weights=" + weights +
-                '}';
+        return "Street: " + name +
+                " weights: " + weights;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Street street = (Street) o;
+        return Objects.equals(name, street.name) && Objects.equals(weights,street.weights);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, weights);
+    }
 
     @Override
     public int compareTo(Object o) {

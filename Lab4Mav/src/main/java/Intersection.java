@@ -24,9 +24,7 @@ public class Intersection implements Comparable {
 
     @Override
     public String toString() {
-        return "Intersection{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Intersection: " + name + '\'';
     }
 
     @Override
