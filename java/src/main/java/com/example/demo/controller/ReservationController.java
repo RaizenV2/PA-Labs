@@ -11,7 +11,7 @@ import service.ReservationService;
 import service.ScheduleService;
 
 import java.util.List;
-
+@RequestMapping
 @RestController
 public class ReservationController {
 
